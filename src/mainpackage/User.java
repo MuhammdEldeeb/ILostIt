@@ -8,6 +8,7 @@ public class User {
 	private String password;
 	private String gender;
 	
+        public User(){}
         
 	public User (int i, String un, String ps, String g) {
 		id = i;
