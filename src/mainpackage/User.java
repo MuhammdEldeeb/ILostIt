@@ -91,6 +91,10 @@ public class User {
 	
 	public boolean SignUp() {
 		Scanner in = new Scanner(System.in);
+                
+                System.out.println("ID : ");
+		int id = in.nextInt(); // read the new id
+                
 		System.out.println("Username: ");
 		String un = in.nextLine(); // read the new username
 		
@@ -100,7 +104,7 @@ public class User {
 		}
 		
 		System.out.println("Password: ");
-		String password = in.nextLine(); // read the new password
+		String pass = in.nextLine(); // read the new password
 		
 		while(password.isEmpty()) {
 			System.out.println("Enter a Valid Password: ");
@@ -108,24 +112,17 @@ public class User {
 		}
 		
 		System.out.println("Gender: ");
-		String gender = in.nextLine(); // read the new gender
+		String g = in.nextLine(); // read the new gender
 		
 		while(gender.isEmpty()) {
 			System.out.println("Enter a Valid Gender: ");
 			gender = in.nextLine(); // read the new gender
 		}
 		
-		// Call The DataBase then return true
-		/*
-		**********
-		**********
-		**********
-		*/	
-		return true;
-		/* else{
-				return false;
-			}
-		*/
+                if(insert(new User(id , un , pass ,g )))
+                    return true;
+                else 
+                    return false;
 	}
 	
 	public boolean Delete(User user) {
