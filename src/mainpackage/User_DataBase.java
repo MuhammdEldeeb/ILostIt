@@ -1,18 +1,13 @@
 package mainpackage;
 
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class User_DataBase {
-	private static ArrayList<User> users;
+	private static ArrayList<User> users = new ArrayList<User>();
         private static FileOutputStream fos;
         private static ObjectOutputStream out;
         private static FileInputStream fis;
@@ -24,25 +19,37 @@ public class User_DataBase {
                 fos = new FileOutputStream(new File(filePath));
                 out = new ObjectOutputStream(fos);
                 out.writeObject(users);
+                out.close();
+                fos.close();
                 return true;
             } catch (Exception ex) {
                 return false;
             }
         }
         
-        public static boolean readFromFile(){
+        public static boolean readFromFile() throws IOException {
             try {
                 fis = new FileInputStream(new File(filePath));
                 in = new ObjectInputStream(fis);
                 users = (ArrayList<User>) in.readObject();
+                in.close();
+                fis.close();
                 return true;
             } catch (Exception ex) {
                 return false;
             }
+
         }
         
-	public static boolean insert(User user) {
+	public static boolean insert(User user) throws IOException {
 		users.add(user);
+		writeonFile();
+        readFromFile();
+		for (User user1 : users) {
+            System.out.println(user1.get_username());
+        }
+
+
 		return true;
 	}
         
