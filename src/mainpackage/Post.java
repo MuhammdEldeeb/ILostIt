@@ -19,7 +19,6 @@ public class Post {
         photo = p;
         owner = u;
         item = it;
-
         Insert(this);
     }
 

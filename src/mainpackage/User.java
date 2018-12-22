@@ -1,5 +1,7 @@
 package mainpackage;
 
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class User {
@@ -7,41 +9,41 @@ public class User {
 	private String username;
 	private String password;
 	private String gender;
-	
-        public User(){}
-        
-	public User (int i, String un, String ps, String g) {
+	private User_DataBase obj;
+
+	public User () {}
+	public User (int i, String un, String ps, String g) throws IOException {
 		id = i;
 		username = un;
 		password = ps;
 		gender = g;
 		insert(this);
 	}
-	
+
 	public boolean Change_Password() {
 		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
-		
+
 		System.out.println("Enter the new password: ");
 		String password = in.nextLine(); // read the new password
-		
+
 		while(password.isEmpty()) {
 			System.out.println("Enter a Valid  username: ");
 			password = in.nextLine(); // read the new password
 		}
-		
+
 		this.password = password;
 		return true;
-		
+
 	}
-	
+
 	public boolean Change_Username() {
 		@SuppressWarnings("resource")
-		
+
 		Scanner in = new Scanner(System.in);
 		System.out.println("Enter the new username: ");
 		String un = in.nextLine(); // read the new username
-		
+
 		while(un.isEmpty()) {
 			System.out.println("Enter a Valid username: ");
 			un = in.nextLine(); // read the new username
@@ -49,130 +51,126 @@ public class User {
 		username = un;
 		return true;
 	}
-	
+
 	public void LogOut() {
 		/*
-		**********
-		**********
-		**********
-		*/
+		 **********
+		 **********
+		 **********
+		 */
 	}
-	
+
 	public boolean SignIn() {
 		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
 		System.out.println("Username: ");
 		String un = in.nextLine(); // read the new username
-		
+
 		while(un.isEmpty()) {
 			System.out.println("Enter a Valid Username: ");
 			un = in.nextLine(); // read the new username
 		}
-		
+
 		System.out.println("Password: ");
 		String password = in.nextLine(); // read the new password
-		
+
 		while(password.isEmpty()) {
 			System.out.println("Enter a Valid Password: ");
 			password = in.nextLine(); // read the new password
 		}
-		
-		// Call The DataBase
-		/*
-		**********
-		**********
-		**********
-		*/
-		return true;
-		/* else{
-				return false;
-			}
-			*/
+
+		if(obj.searchByUsername_Password(un, password) != null)
+			return true;
+		else{
+			return false;
+		}
+
 	}
-	
-	public boolean SignUp() {
+
+	public boolean SignUp() throws IOException {
 		Scanner in = new Scanner(System.in);
-                
-                System.out.println("ID : ");
+
+		System.out.println("ID : ");
 		int id = in.nextInt(); // read the new id
-                
+		in.nextLine();
+
 		System.out.println("Username: ");
 		String un = in.nextLine(); // read the new username
-		
+
 		while(un.isEmpty()) {
 			System.out.println("Enter a Valid Username: ");
 			un = in.nextLine(); // read the new username
 		}
-		
+
 		System.out.println("Password: ");
 		String pass = in.nextLine(); // read the new password
-		
-		while(password.isEmpty()) {
+
+		while(pass.isEmpty()) {
 			System.out.println("Enter a Valid Password: ");
 			password = in.nextLine(); // read the new password
 		}
-		
+
 		System.out.println("Gender: ");
 		String g = in.nextLine(); // read the new gender
-		
-		while(gender.isEmpty()) {
+
+		while(g.isEmpty()) {
 			System.out.println("Enter a Valid Gender: ");
 			gender = in.nextLine(); // read the new gender
 		}
-		
-                if(insert(new User(id , un , pass ,g )))
-                    return true;
-                else 
-                    return false;
+
+		if(insert(new User(id , un , pass ,g )))
+			return true;
+		else
+			return false;
 	}
-	
+
 	public boolean Delete(User user) {
 		if(User_DataBase.delete(user))
-                    return true;
-                else
-                    return false;
+			return true;
+		else
+			return false;
 	}
-	
-	public boolean insert(User user) {
+
+	public boolean insert(User user) throws IOException {
 		if(User_DataBase.insert(user))
-                    return true;
-                else
-                    return false;
+			return true;
+		else
+			return false;
 	}
-	
+
 	public boolean Update(User user) {
 		if(User_DataBase.Update(user))
-                    return true;
-                else 
-                    return false;
+			return true;
+		else
+			return false;
 	}
-	
-	
-	
+
+
+
 	private boolean validate(Item item) {
 		/*
-		**********
-		**********
-		**********
-		*/
+		 **********
+		 **********
+		 **********
+		 */
 		return true;
 	}
-	
+
 	public boolean claim(Item item) {
 		/*
-		**********
-		**********
-		**********
-		*/
+		 **********
+		 **********
+		 **********
+		 */
 		validate(item);
 		return true;
 	}
-	
-	
-	
-		//////////////////
-	
-			//setters
+
+
+
+	//////////////////
+
+	//setters
 	public void set_id(int id) {
 		this.id = id;
 	}
@@ -185,9 +183,9 @@ public class User {
 	public void set_gender(String gender) {
 		this.gender = gender;
 	}
-		///////////////////
-	
-			//getters
+	///////////////////
+
+	//getters
 	public int get_id() {
 		return id;
 	}
@@ -200,5 +198,5 @@ public class User {
 	public String get_gender() {
 		return gender;
 	}
-		///////////////////
+	///////////////////
 }
