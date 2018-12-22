@@ -136,7 +136,6 @@ public class User {
                     return false;
 	}
 	
-	
 	public boolean insert(User user) {
 		if(User_DataBase.insert(user))
                     return true;
@@ -144,19 +143,11 @@ public class User {
                     return false;
 	}
 	
-	public boolean Update() {
-		// Call the DB and Update the user 
-		/*
-		**********
-		**********
-		**********
-		*/
-		return true;
-		
-		/* else{
-				return false;
-			}
-		 */
+	public boolean Update(User user) {
+		if(User_DataBase.Update(user))
+                    return true;
+                else 
+                    return false;
 	}
 	
 	
