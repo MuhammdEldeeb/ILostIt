@@ -76,18 +76,10 @@ public class User {
 			System.out.println("Enter a Valid Password: ");
 			password = in.nextLine(); // read the new password
 		}
-		
-		// Call The DataBase
-		/*
-		**********
-		**********
-		**********
-		*/
+
+		User user = User_DataBase.searchByUsername_Password("admin","123");
+		System.out.println("this is the user " + user.id);
 		return true;
-		/* else{
-				return false;
-			}
-			*/
 	}
 	
 	public boolean SignUp() {

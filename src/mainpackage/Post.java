@@ -20,7 +20,10 @@ public class Post {
         owner = u;
         item = it;
 
-        posts.insert(this);
+        Insert(this);
+    }
+
+    private void insert(Post post) {
     }
 
     public boolean Delete(Post post) {
