@@ -1,10 +1,11 @@
 package mainpackage;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Boundray {
-	
-	public static void main(String [] args) {
+
+	public static void main(String [] args) throws IOException {
                 Scanner s = new Scanner(System.in);
 		System.out.println("\t\tWelcome To ILostIt!\n");
 		System.out.println("Select the function u want: ");
@@ -28,7 +29,7 @@ public class Boundray {
                             break;
                     }
                 }
-                
+
                 /*
 		**********
 		**********
