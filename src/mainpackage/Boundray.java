@@ -14,8 +14,18 @@ public class Boundray {
                     case 1:
                     {
                         User user = new User();
-                        
-                        break;
+                        if(user.SignIn())
+                            travese();
+                        else
+                            break;
+                    }
+                    case 2:
+                    {
+                        User user = new User();
+                        if(user.SignUp())
+                            travese();
+                        else
+                            break;
                     }
                 }
                 
@@ -25,4 +35,11 @@ public class Boundray {
 		**********
 		*/
 	}
+
+        private static void travese() {
+            /**********
+             * ***********
+             * *********
+             */
+        }
 }

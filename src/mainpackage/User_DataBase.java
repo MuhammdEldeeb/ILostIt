@@ -1,6 +1,6 @@
 package mainpackage;
 
-import com.sun.corba.se.impl.io.IIOPOutputStream;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
