@@ -7,16 +7,14 @@ public class User {
 	private String username;
 	private String password;
 	private String gender;
-	private User_DataBase users;
 	
-	public User() {}
-	
+        
 	public User (int i, String un, String ps, String g) {
 		id = i;
 		username = un;
 		password = ps;
-		g = gender;
-		users.insert(this);
+		gender = g;
+		insert(this);
 	}
 	
 	public boolean Change_Password() {
@@ -92,8 +90,11 @@ public class User {
 	}
 	
 	public boolean SignUp() {
-		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
+                
+                System.out.println("ID : ");
+		int id = in.nextInt(); // read the new id
+                
 		System.out.println("Username: ");
 		String un = in.nextLine(); // read the new username
 		
@@ -103,7 +104,7 @@ public class User {
 		}
 		
 		System.out.println("Password: ");
-		String password = in.nextLine(); // read the new password
+		String pass = in.nextLine(); // read the new password
 		
 		while(password.isEmpty()) {
 			System.out.println("Enter a Valid Password: ");
@@ -111,70 +112,38 @@ public class User {
 		}
 		
 		System.out.println("Gender: ");
-		String gender = in.nextLine(); // read the new gender
+		String g = in.nextLine(); // read the new gender
 		
 		while(gender.isEmpty()) {
 			System.out.println("Enter a Valid Gender: ");
 			gender = in.nextLine(); // read the new gender
 		}
 		
-		// Call The DataBase then return true
-		/*
-		**********
-		**********
-		**********
-		*/	
-		return true;
-		/* else{
-				return false;
-			}
-		*/
+                if(insert(new User(id , un , pass ,g )))
+                    return true;
+                else 
+                    return false;
 	}
 	
-	public boolean Delete() {
-		// Call the DB and Delete the user 
-		/*
-		**********
-		**********
-		**********
-		*/
-		return true;
-		
-		/* else{
-				return false;
-			}
-		 */
+	public boolean Delete(User user) {
+		if(User_DataBase.delete(user))
+                    return true;
+                else
+                    return false;
 	}
 	
-	
-	public boolean Insert() {
-		// Call the DB and insert the user 
-		/*
-		**********
-		**********
-		**********
-		*/
-		return true;
-		
-		/* else{
-				return false;
-			}
-		 */
+	public boolean insert(User user) {
+		if(User_DataBase.insert(user))
+                    return true;
+                else
+                    return false;
 	}
 	
-	public boolean Update() {
-		// Call the DB and Update the user 
-		/*
-		**********
-		**********
-		**********
-		*/
-		return true;
-		
-		/* else{
-				return false;
-			}
-		 */
+	public boolean Update(User user) {
+		if(User_DataBase.Update(user))
+                    return true;
+                else 
+                    return false;
 	}
 	
 	
