@@ -49,7 +49,8 @@ public class User_DataBase {
         public static boolean delete(User user){
             for(User i : users){
                 if(i.get_id() == user.get_id()){
-                    return i.Delete();
+                    users.remove(i);
+                    return true;
                 }
             }
             return false;

@@ -90,7 +90,6 @@ public class User {
 	}
 	
 	public boolean SignUp() {
-		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
 		System.out.println("Username: ");
 		String un = in.nextLine(); // read the new username
