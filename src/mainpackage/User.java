@@ -7,16 +7,14 @@ public class User {
 	private String username;
 	private String password;
 	private String gender;
-	private User_DataBase users;
 	
-	public User() {}
-	
+        
 	public User (int i, String un, String ps, String g) {
 		id = i;
 		username = un;
 		password = ps;
-		g = gender;
-		users.insert(this);
+		gender = g;
+		insert(this);
 	}
 	
 	public boolean Change_Password() {
@@ -131,35 +129,19 @@ public class User {
 		*/
 	}
 	
-	public boolean Delete() {
-		// Call the DB and Delete the user 
-		/*
-		**********
-		**********
-		**********
-		*/
-		return true;
-		
-		/* else{
-				return false;
-			}
-		 */
+	public boolean Delete(User user) {
+		if(User_DataBase.delete(user))
+                    return true;
+                else
+                    return false;
 	}
 	
 	
-	public boolean Insert() {
-		// Call the DB and insert the user 
-		/*
-		**********
-		**********
-		**********
-		*/
-		return true;
-		
-		/* else{
-				return false;
-			}
-		 */
+	public boolean insert(User user) {
+		if(User_DataBase.insert(user))
+                    return true;
+                else
+                    return false;
 	}
 	
 	public boolean Update() {
