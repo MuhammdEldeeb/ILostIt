@@ -10,16 +10,9 @@ public class User_DataBase {
 	private static ArrayList<User> users = new ArrayList<User>();
         
 	public static boolean insert(User user) throws IOException {
-        System.out.println("this of the array " +users.size());
-
         users.add(user);
-	    for (User user1 : users) {
-            System.out.println("username " + user1.get_username());
+        return true;
         }
-
-        System.out.println(users.size());
-		return true;
-	}
         
         public static boolean delete(User user){
             for(User i : users){

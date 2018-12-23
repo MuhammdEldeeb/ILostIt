@@ -11,9 +11,9 @@ public class Post_DataBase {
 		return true;
 	}
         
-        public static boolean delete(Post post){
+        public static boolean delete(int id){
             for(Post i : posts){
-                if(post.get_item().get_id() == i.get_item().get_id()){
+                if(i.get_item().get_id() == id){
                     posts.remove(i);
                     return true;
                 }

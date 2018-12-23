@@ -50,13 +50,17 @@ public class Post {
 
 
     public void display(){
-        System.out.println(owner.get_username() + " " + title);
+        System.out.println("Finder Username " + owner.get_username() + " Title:  " + title);
         this.item.display();
         System.out.println("-----------------------------------------");
     }
     
     //////////////////
     //setters	
+    
+    public void set_id_item(int id){
+        this.item.set_id(id);
+    }
     
     public void set_title(String title) {
         this.title = title;
