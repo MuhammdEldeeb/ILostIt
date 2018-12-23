@@ -9,7 +9,7 @@ public class User {
 	private String username;
 	private String password;
 	private String gender;
-	private User_DataBase obj;
+	private User_DataBase user_dataBase;
 
 	public User () {}
 	public User (int i, String un, String ps, String g) throws IOException {
@@ -17,7 +17,7 @@ public class User {
 		username = un;
 		password = ps;
 		gender = g;
-		insert(this);
+//		insert(this);
 	}
 
 	public boolean Change_Password() {
@@ -60,7 +60,7 @@ public class User {
 		 */
 	}
 
-	public boolean SignIn() {
+	public static boolean SignIn() {
 		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
 		System.out.println("Username: ");
@@ -79,15 +79,11 @@ public class User {
 			password = in.nextLine(); // read the new password
 		}
 
-		if(obj.searchByUsername_Password(un, password) != null)
-			return true;
-		else{
-			return false;
-		}
+		return User_DataBase.searchByUsername_Password(un, password) != null;
 
 	}
 
-	public boolean SignUp() throws IOException {
+	public static boolean SignUp() throws IOException {
 		Scanner in = new Scanner(System.in);
 
 		System.out.println("ID : ");
@@ -107,7 +103,7 @@ public class User {
 
 		while(pass.isEmpty()) {
 			System.out.println("Enter a Valid Password: ");
-			password = in.nextLine(); // read the new password
+			pass = in.nextLine(); // read the new password
 		}
 
 		System.out.println("Gender: ");
@@ -115,34 +111,22 @@ public class User {
 
 		while(g.isEmpty()) {
 			System.out.println("Enter a Valid Gender: ");
-			gender = in.nextLine(); // read the new gender
+			g = in.nextLine(); // read the new gender
 		}
 
-		if(insert(new User(id , un , pass ,g )))
-			return true;
-		else
-			return false;
+		return insert(new User(id, un, pass, g));
 	}
 
 	public boolean Delete(User user) {
-		if(User_DataBase.delete(user))
-			return true;
-		else
-			return false;
+		return User_DataBase.delete(user);
 	}
 
-	public boolean insert(User user) throws IOException {
-		if(User_DataBase.insert(user))
-			return true;
-		else
-			return false;
+	public static boolean insert(User user) throws IOException {
+		return User_DataBase.insert(user);
 	}
 
 	public boolean Update(User user) {
-		if(User_DataBase.Update(user))
-			return true;
-		else
-			return false;
+		return User_DataBase.Update(user);
 	}
 
 
