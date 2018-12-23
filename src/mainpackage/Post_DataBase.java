@@ -38,4 +38,12 @@ public class Post_DataBase {
             }
             return null;
         }
+        
+        public static ArrayList<Post> retreave(){
+            ArrayList<Post> temp = new ArrayList<>();
+            for(Post i : posts){
+                temp.add(i);
+            }
+            return temp;
+        }
 }

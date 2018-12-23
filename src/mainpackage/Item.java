@@ -11,26 +11,36 @@ public class Item {
     private String color;
     private String area;
     private String type;
-    //private Item_DataBase items;
-
+    private String image;
+    private Scanner s;
+    
     public Item() {
     }
 
-    public Item(int i, String n, String d, String c, String a, String t) {
+    public Item(int i, String n, String d, String c, String a, String t , String img) {
+        name = n;
         id = i;
         description = d;
         color = c;
         area = a;
         type = t;
-
+        image = img;
+        insert();
     }
 
+    /**
+     *
+     */
+    public void display(){
+        System.out.println(id + " " + image);
+        System.out.println(description);
+        System.out.println("-----------------------------------------");
+    }
+    
     public ArrayList<Item> Search() {
-        @SuppressWarnings("resource")
         Scanner in = new Scanner(System.in);
         Item get = new Item();
-        ArrayList<Item> found = new ArrayList<Item>();
-
+        
         System.out.println("Enter the name: ");
         get.set_name(in.nextLine());
 
@@ -45,36 +55,37 @@ public class Item {
 
         System.out.println("Enter the type: ");
         get.set_type(in.nextLine());
+        
 
-        // Call the DB and fill the  found array
-        /*
-		**********
-		**********
-		**********
-         */
+        ArrayList<Item> found = Item_DataBase.search(get);
+        
         return found;
     }
 
-    public boolean Delete(Item item) {
-
-        if (Item_DataBase.delete(item)) {
-            return true;
-        } else {
-            return false;
-
-        }
-    }
-
-    public boolean Insert(Item item) {
-        if (Item_DataBase.insert(item)) {
+    public boolean insert() {
+        if (Item_DataBase.insert(this)) {
             return true;
         } else {
             return false;
         }
     }
 
-    public boolean Update(Item item) {
-        if (Item_DataBase.update(item)) {
+    public boolean Update() {
+        
+        System.out.print("new name : ");
+        name = s.nextLine();
+        System.out.print("new description : ");
+        description = s.nextLine();
+        System.out.print("new color : ");
+        color = s.nextLine();
+        System.out.print("new area : ");
+        area = s.nextLine();
+        System.out.print("new type : ");
+        type = s.nextLine();
+        System.out.print("new image : ");
+        image = s.nextLine();
+        
+        if (Item_DataBase.update(this)) {
             return true;
         } else {
             return false;
@@ -115,6 +126,9 @@ public class Item {
         this.area = area;
     }
 
+    public void set_image(String img) {
+        this.image = img;
+    }
     ///////////////////
     //getters
     public int get_id() {

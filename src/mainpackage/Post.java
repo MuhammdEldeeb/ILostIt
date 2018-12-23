@@ -1,5 +1,7 @@
 package mainpackage;
 
+import java.util.Scanner;
+
 public class Post {
 
     private int id;
@@ -8,18 +10,18 @@ public class Post {
     private String photo;
     private User owner;
     private Item item;
-
+    private Scanner s;
+    
     public Post() {
     }
 
     public Post(int i, String d, String t, String p, User u, Item it) {
-        id = i;
-        description = d;
+        Scanner s = new Scanner(System.in);
         title = t;
         photo = p;
         owner = u;
         item = it;
-        Insert(this);
+        insert(this.owner.get_username());
     }
 
     public boolean Delete(Post post) {
@@ -32,7 +34,27 @@ public class Post {
         }
     }
 
-    public boolean Insert(Post post) {
+    public boolean insert(String newOwner) {
+        Item item = new Item();
+        item.insert();
+        System.out.print("ID : ");
+        int i = s.nextInt();
+        System.out.print("title : ");
+        String t = s.nextLine();
+        System.out.print("Image : ");
+        String ph = s.nextLine();
+        System.out.print("Descriptio : ");
+        String d = s.nextLine();
+        System.out.print("Item : ");
+        String it = s.nextLine();
+        
+        Post post = new Post();
+        post.id = i;
+        post.description = d;
+        post.title = t;
+        post.photo = ph;
+        
+        
         if (Post_DataBase.insert(post)) {
             return true;
         } else {
