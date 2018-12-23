@@ -60,7 +60,7 @@ public class User {
 		 */
 	}
 
-	public static boolean SignIn() {
+	public static User SignIn() {
 		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
 		System.out.println("Username: ");
@@ -79,7 +79,7 @@ public class User {
 			password = in.nextLine(); // read the new password
 		}
 
-		return User_DataBase.searchByUsername_Password(un, password) != null;
+		return User_DataBase.searchByUsername_Password(un, password);
 
 	}
 

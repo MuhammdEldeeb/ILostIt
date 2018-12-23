@@ -22,7 +22,7 @@ public class Boundray {
 
             switch (choice) {
                 case 1: {
-                    if (User.SignIn()) {
+                    if (User.SignIn() != null) {
                         System.out.println("Logged in successfully!");
                         travese();
                     }else{
