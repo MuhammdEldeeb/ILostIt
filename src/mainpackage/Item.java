@@ -32,8 +32,8 @@ public class Item {
      *
      */
     public void display(){
-        System.out.println(id + " " + image);
-        System.out.println(description);
+        System.out.println("Item id " + id +" Image "+ image);
+        System.out.println("Description: " +description);
     }
     
     public ArrayList<Item> Search() {

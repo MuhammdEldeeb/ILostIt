@@ -49,10 +49,9 @@ public class Boundray {
             private static void travese() {
                 System.out.println("now u r in the app");
                 while(loggedin){
-                    Post_DataBase.retreave();
-                    
+
                     System.out.println("Select the process u want to do:");
-                    System.out.println("(1)LogOut\n(2)Post\n(3)Delete\n(4)Update(5)Claim\n(6)Search");
+                    System.out.println("(1)LogOut\n(2)Post\n(3)Delete\n(4)Update\n(5)index\n(6)Search");
                     int choice = s.nextInt();
                     switch(choice){
                         case 1:{ // logout process
@@ -63,6 +62,7 @@ public class Boundray {
                             
                             Post post = new Post();
                             post.set_owner(user);
+
                             if(post.insert())
                                 System.out.println("ur post is successfully created");
                             else{
@@ -74,8 +74,7 @@ public class Boundray {
                             Post post = new Post();
                             System.out.println("Enter the id of the post u want to delete :");
                             int id = s.nextInt();
-                            post.set_id_item(id);
-                            if(Post_DataBase.delete(post)){
+                            if(Post_DataBase.delete(id)){
                                 System.out.println("post is successfully deleted");
                             }else{
                                 System.out.println("somthing went wrong with deleting the post");
@@ -95,7 +94,7 @@ public class Boundray {
                             break;
                         }
                         case 5:{ // claim
-                            
+                            Post_DataBase.retreave();
                             break;
                         }
                         case 6:{ // search
@@ -110,8 +109,11 @@ public class Boundray {
                             String ty = s.next();
                             System.out.println("image");
                             String ima = s.next();
+                            System.out.println("name");
+                            String name = s.next();
                             
                             Item item = new Item();
+                            item.set_name(name);
                             item.set_area(ar);
                             item.set_color(co);
                             item.set_description(desc);

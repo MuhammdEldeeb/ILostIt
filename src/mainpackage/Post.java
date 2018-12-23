@@ -50,7 +50,7 @@ public class Post {
 
 
     public void display(){
-        System.out.println(owner.get_username() + " " + title);
+        System.out.println("Finder Username " + owner.get_username() + " Title:  " + title);
         this.item.display();
         System.out.println("-----------------------------------------");
     }
