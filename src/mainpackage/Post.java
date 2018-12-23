@@ -1,69 +1,65 @@
 package mainpackage;
 
+import java.util.Scanner;
+
 public class Post {
 
-    private int id;
-    private String description;
     private String title;
-    private String photo;
     private User owner;
     private Item item;
-
+    
+    
     public Post() {
     }
 
-    public Post(int i, String d, String t, String p, User u, Item it) {
-        id = i;
-        description = d;
+    public Post(String t, User u, Item it) {
         title = t;
-        photo = p;
         owner = u;
         item = it;
-        Insert(this);
+        insert();
     }
 
-    public boolean Delete(Post post) {
-
-        if (Post_DataBase.delete(post)) {
+    public boolean insert() {
+        Scanner s = new Scanner(System.in);
+        System.out.print("ID : ");
+        int i = s.nextInt();
+        System.out.print("name : ");
+        String n = s.next();
+        System.out.print("desc : ");
+        String des = s.next();
+        System.out.print("Color : ");
+        String col = s.next();
+        System.out.print("Area : ");
+        String ar = s.next();
+        System.out.print("Type : ");
+        String ty = s.next();
+        System.out.print("image : ");
+        String img = s.next();
+        
+        this.item = new Item( i ,n , des , col , ar , ty , img );
+        
+        System.out.print("title : ");
+        this.title = s.next();
+        
+        if (Post_DataBase.insert(this)) {
             return true;
         } else {
             return false;
-
         }
     }
 
-    public boolean Insert(Post post) {
-        if (Post_DataBase.insert(post)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
-    public boolean Update(Post post) {
-        if (Post_DataBase.udate(post)) {
-            return true;
-        } else {
-            return false;
-        }
+    public void display(){
+        System.out.println(owner.get_username() + " " + title);
+        this.item.display();
+        System.out.println("-----------------------------------------");
     }
-
+    
     //////////////////
     //setters	
-    public void set_id(int id) {
-        this.id = id;
-    }
-
+    
     public void set_title(String title) {
         this.title = title;
-    }
-
-    public void set_description(String description) {
-        this.description = description;
-    }
-
-    public void set_type(String photo) {
-        this.photo = photo;
     }
 
     public void set_owner(User o) {
@@ -76,21 +72,11 @@ public class Post {
 
     ///////////////////
     //getters
-    public int get_id() {
-        return id;
-    }
-
-    public String get_description() {
-        return description;
-    }
-
+    
     public String get_title() {
         return title;
     }
 
-    public String get_photo() {
-        return photo;
-    }
 
     public User get_owner() {
         return owner;
