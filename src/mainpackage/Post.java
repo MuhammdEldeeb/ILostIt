@@ -58,6 +58,10 @@ public class Post {
     //////////////////
     //setters	
     
+    public void set_id_item(int id){
+        this.item.set_id(id);
+    }
+    
     public void set_title(String title) {
         this.title = title;
     }
