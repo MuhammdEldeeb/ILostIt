@@ -8,27 +8,34 @@ public class Boundray {
 	public static void main(String [] args) throws IOException {
                 Scanner s = new Scanner(System.in);
 		System.out.println("\t\tWelcome To ILostIt!\n");
-		System.out.println("Select the function u want: ");
-                System.out.println("(1) Login\n(2) Sign up");
-                int choice = s.nextInt();
-                switch(choice){
-                    case 1:
-                    {
-                        User user = new User();
-                        if(user.SignIn())
-                            travese();
-                        else
-                            break;
+        int choice = 1;
+
+		while (choice != 0) {
+            System.out.println("Select the function u want: ");
+            System.out.println("(1) Login\n(2) Sign up");
+            choice = s.nextInt();
+
+            switch (choice) {
+                case 1: {
+                    if (User.SignIn()) {
+                        System.out.println("Logged in successfully!");
+                        travese();
+                    }else{
+                        System.out.println("Wrong Credentials");
                     }
-                    case 2:
-                    {
-                        User user = new User();
-                        if(user.SignUp())
-                            travese();
-                        else
-                            break;
-                    }
+                        break;
                 }
+                case 2: {
+                    if (User.SignUp()) {
+                        System.out.println("User info has been saved!");
+                        travese();
+                    }else{
+                        System.out.println("there seems to be an error");
+                    }
+                        break;
+                }
+            }
+        }
 
                 /*
 		**********
