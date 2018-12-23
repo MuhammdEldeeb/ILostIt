@@ -34,7 +34,6 @@ public class Item {
     public void display(){
         System.out.println(id + " " + image);
         System.out.println(description);
-        System.out.println("-----------------------------------------");
     }
     
     public ArrayList<Item> Search() {

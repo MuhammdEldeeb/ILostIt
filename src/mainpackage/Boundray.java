@@ -44,7 +44,7 @@ public class Boundray {
 //                }
             
 
-//
+user.set_username("Eldeeb");
 //            Item item1 = new Item(1, "A", "Apple bla bla bla ", "Red", "Giza", "Apple" , "AppleImage");
 //            
 //            Item item2 = new Item(2, "b", "Apple bla bla bla ", "green", "Giza", "Apple" , "AppleImage");
@@ -53,9 +53,20 @@ public class Boundray {
 //            
 //            Item item4 = new Item(4, "v", "Apple bla bla bla ", "Red", "dokki", "Apple" , "AppleImage");
 //      
+            Post post1 = new Post("title1" , user , new Item(1, "A", "Apple bla bla bla ", "Red", "Giza", "Apple" , "AppleImage"));
+            Post post2 = new Post("title2" , user , new Item(3, "v", "Apple bla bla bla ", "Red", "dokki", "Apple" , "AppleImage"));
+            //Post post3 = new Post("title3" , user , new Item(2, "b", "Apple bla bla bla ", "green", "Giza", "Apple" , "AppleImage"));
+            
+            Post_DataBase.retreave();
+            System.out.println("**********************************************");
+            Post_DataBase.udate(post1);
+            
+            Post_DataBase.retreave();
 //            Item_DataBase.retreave();
-//            System.out.println("**********************************************");
+            System.out.println("**********************************************");
 //
+            
+
 //            Item_DataBase.delete(item4);
 //            
 //            Item_DataBase.retreave();
